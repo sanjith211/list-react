@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [blogs, setBlogs] = useState([
+    {
+      title: "My new website",
+      body: "lorem ipsum...",
+      author: "mario",
+      id: 1,
+    },
+    {
+      title: "Welcome party!",
+      body: "lorem ipsum...",
+      author: "yoshi",
+      id: 2,
+    },
+    {
+      title: "Web dev top tips",
+      body: "lorem ipsum...",
+      author: "mario",
+      id: 3,
+    },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="blogs">
+        {blogs.map((blog) => (
+          <div className="list" key={blog.id}>
+            <h2>{blog.title}</h2>
+            <p>Written by {blog.author}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
